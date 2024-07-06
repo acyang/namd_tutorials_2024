@@ -1,4 +1,4 @@
-# docker build -t namd:latest .
+# docker build -t train:v25 .
 FROM nvcr.io/nvidia/cuda:12.5.0-runtime-ubuntu22.04
 
 LABEL maintainer "An-Cheng Yang<acyang0903@gmail.com>"
@@ -25,5 +25,7 @@ RUN tar -zxv -f /root/NAMD_2.14_Linux-x86_64-multicore-CUDA.tar.gz -C /opt
 ENV PATH /opt/NAMD_2.14_Linux-x86_64-multicore-CUDA:$PATH
 
 ENV LD_LIBRARY_PATH /opt/NAMD_2.14_Linux-x86_64-multicore-CUDA:$LD_LIBRARY_PATH
+
+COPY tutorials /root
 
 ENTRYPOINT ["/usr/bin/tini", "--"]
